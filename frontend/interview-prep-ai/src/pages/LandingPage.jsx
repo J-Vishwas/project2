@@ -7,14 +7,23 @@ import previewImage from '../assets/image.png'; // Adjust path as needed
 import Modal from '../components/Modal';
 import Login from './Auth/Login'
 import SignUp from './Auth/SignUp';
+import { UserContext } from "../context/userContext";
+import { useContext } from "react";
+import ProfileInfoCard from "../components/Cards/profileInfoCard";
 function LandingPage() {
+      const { user } = useContext(UserContext);
     const navigate = useNavigate();
-    const [openAuthModal,setOpenAuthModel] = useState(false);
+    const [openAuthModal,setOpenAuthModal] = useState(false);
     const[currentPage,setCurrentPage] = useState("login");
 
-    const handleCTA=()=>{
-   
+    const handleCTA = () => {
+    if (!user) {
+      setOpenAuthModal(true);
+    } else {
+      navigate("/dashboard");
     }
+  };
+
   return (
     <div className="w-full min-h-screen bg-[#FFFCEF] relative overflow-hidden">
       {/* Decorative Blur Circle */}
@@ -25,12 +34,14 @@ function LandingPage() {
         {/* Header */}
         <header className="flex justify-between items-center">
           <h1 className="text-xl font-semibold text-black">Interview Prep AI</h1>
-          <button
-            onClick={() => setOpenAuthModel(true)}
+          {user?(
+              <ProfileInfoCard />
+            ) : (<button
+            onClick={() => setOpenAuthModal(true)}
             className="bg-orange-500 hover:bg-orange-600 transition text-white px-5 py-2 rounded-full font-medium"
           >
             Login / Sign Up
-          </button>
+          </button>)}
         </header>
 
         {/* Hero Content */}
@@ -118,7 +129,7 @@ function LandingPage() {
 <Modal
   isOpen={openAuthModal}
   onClose={() => {
-    setOpenAuthModel(false);
+    setOpenAuthModal(false);
     setCurrentPage("login");
   }}
   hideHeader

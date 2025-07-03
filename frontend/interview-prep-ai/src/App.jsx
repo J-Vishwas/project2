@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-
+import UserProvider from './context/userContext';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Home/Dashboard';
 import InterviewPrep from "./pages/InterviewPrep/InterviewPrep";
 function App() {
   return (
+     <UserProvider>
     <div >
        
        <Router>
@@ -32,6 +33,7 @@ function App() {
       <Toaster toastOptions={{ className: "", style: { fontSize: "13px" } }} />
       
        </div>
+       </UserProvider>
   )
 }
 
