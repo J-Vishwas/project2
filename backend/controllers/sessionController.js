@@ -1,4 +1,4 @@
-const Session = require("../models/session");
+const Session = require("../models/Session.js");
 const Question = require("../models/Question");
 
 // @desc Create a new session and linked questions
