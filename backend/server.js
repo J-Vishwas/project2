@@ -9,35 +9,15 @@ const app = express();
 const { protect } = require('./middlewares/authMiddleware');
 const {generateConceptExplanation,generateInterviewQuestions} = require('./controllers/aiController')
 // Middleware to handle CORS
-// app.use(
-//   cors({
-//      origin: [ "https://project2-two-ashen.vercel.app/","*"],
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     allowedHeaders: ["Content-Type", "Authorization"],
-//   })
-// );
-
-const allowedOrigins = [
-  'http://localhost:5173', // local dev
-  'https://project2-two-ashen.vercel.app/', // deployed frontend
-];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
+     origin: ["*"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// Preflight requests support
-app.options('*', cors());
+
 
 connectDB()
 // Middleware
