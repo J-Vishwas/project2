@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:8000/api";
+export const BASE_URL = "https://project2-wmni.onrender.com/api";
 
 export const API_PATHS = {
   AUTH: {
