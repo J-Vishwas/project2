@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPaths";
-import SpinnerLoader from "../../components/Loader/SpinnerLoader";
+import SpinnerLoader from "../../components/loader/SpinnerLoader";
 
 const CreateSessionForm = () => {
   const [formData, setFormData] = useState({
