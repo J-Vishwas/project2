@@ -1,7 +1,7 @@
 import React,{useContext} from "react";
 
 import { UserContext } from "../../context/userContext";
-import NavBar from "./NavBar";
+import Navbar from "./Navbar";
 
 const DashboardLayout = ({ children }) => {
  const {user} = useContext(UserContext);
@@ -10,7 +10,7 @@ const DashboardLayout = ({ children }) => {
   return (
     
       <div>
-        <NavBar/>
+        <Navbar/>
         {user && <div>{children}</div>}
       </div>
   );
