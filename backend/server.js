@@ -11,7 +11,7 @@ const {generateConceptExplanation,generateInterviewQuestions} = require('./contr
 // Middleware to handle CORS
 app.use(
   cors({
-     origin: [ "https://interview-prep-njtd.vercel.app/"],
+     origin: [ "https://project2-two-ashen.vercel.app/","*"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
